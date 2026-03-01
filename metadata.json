@@ -1,0 +1,24 @@
+{
+  "project": "Clínica Dental CIES Málaga",
+  "version": "1.0.0",
+  "description": "Migración a React 19 + Tailwind CSS + Framer Motion. Enfoque en SEO y conversión.",
+  "status": "In Progress",
+  "technologies": [
+    "Vite",
+    "React 19",
+    "Tailwind CSS 3.4.17",
+    "Framer Motion",
+    "Lucide React",
+    "React Helmet Async",
+    "React Router Dom"
+  ],
+  "seo_check": {
+    "prerender": true,
+    "sitemap": true,
+    "robots": true,
+    "canonical": true,
+    "open_graph": true,
+    "schema_org": "Pending",
+    "performance_optimized": true
+  }
+}

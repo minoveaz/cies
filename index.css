@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #838F61;
+  --primary-dark: #363C27;
+  --secondary: #A7B287;
+  --background: #F7F8F9;
+  --text-main: #222222;
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  @apply bg-background-light text-text-main;
+}
+
+a {
+  @apply no-underline;
+  color: inherit;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-8 py-4 bg-[#363C27] text-white rounded-none font-bold uppercase tracking-widest text-sm transition-all duration-300 hover:bg-[#838F61] border border-[#363C27];
+  }
+  .btn-secondary {
+    @apply px-8 py-4 bg-[#A7B287] text-white rounded-none font-bold uppercase tracking-widest text-sm transition-all duration-300 hover:bg-[#363C27] border border-[#A7B287];
+  }
+  .btn-outline {
+    @apply px-8 py-4 bg-transparent text-[#363C27] border border-[#363C27] rounded-none font-bold uppercase tracking-widest text-sm transition-all duration-300 hover:bg-[#363C27] hover:text-white;
+  }
+}
