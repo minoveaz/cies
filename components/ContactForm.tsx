@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Send, CheckCircle2 } from 'lucide-react';
+import { trackEvent } from '@/utils/analytics';
 
 const ContactForm: React.FC = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -9,10 +10,12 @@ const ContactForm: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+    
     // Simulate API call
     setTimeout(() => {
       setLoading(false);
       setIsSubmitted(true);
+      trackEvent('contact_form_submit', { category: 'conversion', label: 'Home Page' });
     }, 1500);
   };
 

@@ -21,6 +21,7 @@ import SEO from '@/components/SEO';
 import ContactForm from '@/components/ContactForm';
 import ReviewsSection from '@/components/ReviewsSection';
 import FAQSection from '@/components/FAQSection';
+import { trackEvent } from '@/utils/analytics';
 
 const Home: React.FC = () => {
   const services = [
@@ -150,6 +151,72 @@ const Home: React.FC = () => {
     }
   };
 
+  const homeSchema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Dentist",
+        "@id": "https://ciesclinica.com/#organization",
+        "name": "Clínica Dental CIES Málaga",
+        "url": "https://ciesclinica.com",
+        "telephone": "+34951919425",
+        "priceRange": "$$",
+        "image": "https://ciesclinica.com/images/clinica-dental-malaga-cies-foto.jpg",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Calle Ntra. Sra. de las Candelas 14, local 4",
+          "addressLocality": "Málaga",
+          "postalCode": "29004",
+          "addressCountry": "ES"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 36.6873858,
+          "longitude": -4.4494462
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday"],
+            "opens": "09:30",
+            "closes": "20:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": "Friday",
+            "opens": "09:00",
+            "closes": "17:00"
+          }
+        ],
+        "sameAs": [
+          "https://www.facebook.com/ciesclinicadental",
+          "https://www.instagram.com/ciesclinica/"
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "¿Duele el tratamiento de implantes dentales?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Gracias a nuestra tecnología avanzada y al uso de anestesia local de última generación, el procedimiento es prácticamente indoloro."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Ofrecéis opciones de financiación?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Sí, en Clínica CIES ofrecemos planes de financiación a medida de hasta 24 meses sin intereses."
+            }
+          }
+        ]
+      }
+    ]
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -160,8 +227,9 @@ const Home: React.FC = () => {
     >
       <SEO
         title="Tu Clínica Dental en Málaga de Confianza"
-        description="Clínica Dental CIES en Málaga. Expertos en implantes dentales, ortodoncia invisible y estética dental."
+        description="Clínica Dental CIES en Málaga. Expertos en implantes dentales, ortodoncia invisible y estética dental. Cuidamos tu sonrisa con tecnología avanzada y trato humano."
         canonical="/"
+        schema={homeSchema}
       />
 
       {/* Hero Section */}
@@ -362,6 +430,7 @@ const Home: React.FC = () => {
               <img 
                 src="/images/dentista-malaga-cita.webp" 
                 alt="Atención al paciente CIES" 
+                loading="lazy"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-[#363C27]/20 group-hover:bg-transparent transition-colors duration-500" />
@@ -378,6 +447,7 @@ const Home: React.FC = () => {
               <img 
                 src="/images/implante-dental-malaga.jpg" 
                 alt="Cirugía dental avanzada" 
+                loading="lazy"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-[#838F61]/10" />
@@ -391,6 +461,7 @@ const Home: React.FC = () => {
               <img 
                 src="/images/clinicas-dentales-en-malaga.jpg" 
                 alt="Equipo CIES Málaga" 
+                loading="lazy"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-br from-[#838F61]/20 to-[#363C27]/40 mix-blend-overlay" />
@@ -431,6 +502,7 @@ const Home: React.FC = () => {
                 <img 
                   src={service.image} 
                   alt={service.title} 
+                  loading="lazy"
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                 />
                 
@@ -454,6 +526,7 @@ const Home: React.FC = () => {
 
                   <a 
                     href={service.link}
+                    onClick={() => trackEvent('view_treatment', { label: service.title })}
                     className="inline-block w-full py-4 text-center bg-white/10 backdrop-blur-md border border-white/20 text-white text-[10px] font-black uppercase tracking-widest hover:bg-white hover:text-[#1A1D16] transition-all duration-300"
                   >
                     Ver detalles
@@ -517,7 +590,7 @@ const Home: React.FC = () => {
                 className="group bg-white p-6 shadow-sm border border-slate-100 flex flex-col h-full"
               >
                 <div className="aspect-[4/5] overflow-hidden mb-8 relative">
-                  <img src={member.image} alt={member.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                  <img src={member.image} alt={member.name} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#1A1D16]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </div>
                 
@@ -567,7 +640,13 @@ const Home: React.FC = () => {
                     </div>
                     <div>
                       <h5 className="font-black text-[10px] uppercase tracking-[0.2em] text-[#575760] mb-1">Teléfono</h5>
-                      <p className="text-2xl text-[#222222] font-black tracking-tighter">951 91 94 25</p>
+                      <a 
+                        href="tel:+34951919425"
+                        onClick={() => trackEvent('phone_call_click', { category: 'conversion', label: 'Contact Section' })}
+                        className="text-2xl text-[#222222] font-black tracking-tighter hover:text-[#838F61] transition-colors"
+                      >
+                        951 91 94 25
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -580,9 +659,15 @@ const Home: React.FC = () => {
                     </div>
                     <div>
                       <h5 className="font-black text-[10px] uppercase tracking-[0.2em] text-[#575760] mb-1">Dirección</h5>
-                      <p className="text-sm text-[#222222] font-bold uppercase leading-tight">
+                      <a 
+                        href="https://maps.app.goo.gl/CvGH6j93P3XaEvxZ9"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => trackEvent('phone_call_click', { category: 'engagement', label: 'Map Card' })}
+                        className="text-sm text-[#222222] font-bold uppercase leading-tight hover:text-[#838F61] transition-colors"
+                      >
                         C. Ntra. Sra. de las Candelas 14, <br /> 29004 Málaga
-                      </p>
+                      </a>
                     </div>
                   </div>
                 </div>

@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Phone, ChevronDown } from 'lucide-react';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
+import { trackEvent } from '@/utils/analytics';
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -170,6 +171,7 @@ const Navbar: React.FC = () => {
         <div className="hidden md:flex items-center gap-4">
           <a
             href={`tel:${phoneCall}`}
+            onClick={() => trackEvent('phone_call_click', { category: 'conversion', label: 'Navbar' })}
             className="flex items-center gap-2 text-[#363C27] font-bold hover:text-[#838F61] transition-colors group"
           >
             <div className="w-7 h-7 bg-[#363C27]/10 rounded-none flex items-center justify-center group-hover:bg-[#838F61]/10">
@@ -179,6 +181,7 @@ const Navbar: React.FC = () => {
           </a>
           <button 
             style={{ backgroundColor: verdeBosque }}
+            onClick={() => trackEvent('contact_form_submit', { category: 'conversion', label: 'Navbar Button' })}
             className="px-5 py-2.5 text-white rounded-none font-black uppercase tracking-[0.15em] text-[10px] shadow-sm hover:bg-[#838F61] transition-all duration-300"
           >
             Cita Online

@@ -12,7 +12,21 @@ export default defineConfig({
     react(),
     Sitemap({
       hostname: 'https://ciesclinica.com',
-      dynamicRoutes: ['/blog', '/implantes-dentales', '/ortodoncia-invisible'],
+      dynamicRoutes: [
+        '/implantes-dentales', 
+        '/ortodoncia-invisible', 
+        '/brackets', 
+        '/estetica-dental',
+        '/periodoncia',
+        '/endodoncia',
+        '/bruxismo',
+        '/acido-hialuronico',
+        '/sobre-nosotros',
+        '/blog',
+        '/contacto',
+        '/privacidad',
+        '/cookies'
+      ],
     }),
   ],
   resolve: {

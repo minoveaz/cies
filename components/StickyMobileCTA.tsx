@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Phone, MessageCircle } from 'lucide-react';
+import { trackEvent } from '@/utils/analytics';
 
 const StickyMobileCTA: React.FC = () => {
   const whatsappNumber = "34689189999";
@@ -15,6 +16,7 @@ const StickyMobileCTA: React.FC = () => {
       <div className="flex gap-3 h-12">
         <a 
           href={`tel:${phoneCall}`}
+          onClick={() => trackEvent('phone_call_click', { category: 'conversion', label: 'Sticky Mobile' })}
           className="flex-1 bg-[#F7F8F9] text-[#363C27] flex items-center justify-center gap-2 font-black uppercase text-[10px] tracking-widest border border-slate-200"
         >
           <Phone className="w-4 h-4" />
@@ -24,6 +26,7 @@ const StickyMobileCTA: React.FC = () => {
           href={`https://wa.me/${whatsappNumber}`}
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() => trackEvent('whatsapp_click', { category: 'conversion', label: 'Sticky Mobile' })}
           className="flex-[1.5] bg-[#25D366] text-white flex items-center justify-center gap-2 font-black uppercase text-[10px] tracking-widest shadow-lg shadow-[#25D366]/20"
         >
           <MessageCircle className="w-4 h-4 fill-current" />

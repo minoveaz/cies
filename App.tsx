@@ -4,9 +4,15 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { MessageCircle, Phone, Mail, MapPin, Instagram, Facebook } from 'lucide-react';
 import Navbar from './components/Navbar';
 import StickyMobileCTA from './components/StickyMobileCTA';
+import { trackEvent } from './utils/analytics';
 
 // Pages - Lazy loading
 const Home = lazy(() => import('./pages/Home'));
+const PrivacyPolicy = lazy(() => import('./pages/legal/PrivacyPolicy'));
+const CookiesPolicy = lazy(() => import('./pages/legal/CookiesPolicy'));
+const About = lazy(() => import('./pages/About'));
+const Blog = lazy(() => import('./pages/Blog'));
+const Contact = lazy(() => import('./pages/Contact'));
 
 const App: React.FC = () => {
   const location = useLocation();
@@ -35,6 +41,11 @@ const App: React.FC = () => {
           <AnimatePresence mode="wait">
             <Routes location={location} key={location.pathname}>
               <Route path="/" element={<Home />} />
+              <Route path="/sobre-nosotros" element={<About />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/contacto" element={<Contact />} />
+              <Route path="/privacidad" element={<PrivacyPolicy />} />
+              <Route path="/cookies" element={<CookiesPolicy />} />
             </Routes>
           </AnimatePresence>
         </Suspense>
@@ -128,6 +139,7 @@ const App: React.FC = () => {
         href={`https://wa.me/${whatsappNumber}`}
         target="_blank"
         rel="noopener noreferrer"
+        onClick={() => trackEvent('whatsapp_click', { category: 'conversion', label: 'Floating Button' })}
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         whileHover={{ scale: 1.1 }}
