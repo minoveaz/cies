@@ -14,59 +14,61 @@ import {
   Eye,
   Microscope,
   Box,
-  MonitorCheck
+  MonitorCheck,
+  CheckCircle2
 } from 'lucide-react';
 import SEO from '@/components/SEO';
 import ContactForm from '@/components/ContactForm';
 import ReviewsSection from '@/components/ReviewsSection';
+import FAQSection from '@/components/FAQSection';
 
 const Home: React.FC = () => {
   const services = [
     {
       title: "Implantes Dentales",
-      description: "Recupera tu sonrisa con la tecnología más avanzada en implantología. Resultados naturales y duraderos.",
+      description: "Recupera la seguridad al comer y sonreír con soluciones que se sienten y se ven como tus propios dientes. Calidad de vida sin compromisos.",
       image: "/images/implante-dental-malaga.jpg",
       link: "/implantes-dentales"
     },
     {
       title: "Ortodoncia Invisible",
-      description: "Alinea tus dientes de forma discreta y cómoda con los últimos sistemas de ortodoncia transparente.",
+      description: "Alinea tu sonrisa de forma discreta mientras sigues con tu ritmo de vida. Comodidad y estética en cada paso hacia tu sonrisa ideal.",
       image: "/images/ortodoncia-invisible-malaga.jpg",
       link: "/ortodoncia-invisible"
     },
     {
       title: "Brackets",
-      description: "Ortodoncia convencional y estética para corregir la posición de tus dientes con la máxima eficacia.",
+      description: "Transformamos tu mordida con la máxima precisión. Una inversión para toda la vida en salud, funcionalidad y confianza propia.",
       image: "/images/brackets-malaga.jpg",
       link: "/brackets"
     },
     {
       title: "Estética Dental",
-      description: "Diseño de sonrisa personalizado mediante carillas, blanqueamiento y contorneado estético.",
+      description: "Diseñamos la armonía de tu boca para que refleje tu mejor versión. Resultados naturales que potencian tu luz personal.",
       image: "/images/carillas-dentales-malaga-2.jpg",
       link: "/carillas-dentales"
     },
     {
       title: "Periodoncia",
-      description: "Cuidamos la salud de tus encías para prevenir la pérdida de piezas dentales y asegurar una base sana.",
+      description: "Cuidamos la base de tu sonrisa. Porque unas encías sanas son el secreto para mantener tus dientes contigo siempre.",
       image: "/images/clinica-periodoncia-malaga.jpg",
       link: "/periodoncia"
     },
     {
       title: "Endodoncia",
-      description: "Tratamientos de conducto avanzados para salvar piezas dentales dañadas evitando su extracción.",
+      description: "Dile adiós al dolor y conserva tus piezas originales. Nuestra prioridad es salvar tus dientes con tecnología suave y efectiva.",
       image: "/images/endodoncia-malaga.jpg",
       link: "/endodoncia"
     },
     {
       title: "Bruxismo",
-      description: "Soluciones para el rechinamiento dental y dolores articulares relacionados con la ATM.",
+      description: "Despierta con energía y sin tensiones. Protegemos tu dentadura del desgaste para que vuelvas a descansar de verdad.",
       image: "/images/bruxismo-malaga-1.jpg",
       link: "/bruxismo"
     },
     {
       title: "Medicina Estética",
-      description: "Tratamientos con Ácido Hialurónico para armonizar tu sonrisa con el resto de tu rostro.",
+      description: "Realza tu expresión natural con retoques sutiles que complementan tu sonrisa y devuelven la juventud a tu rostro.",
       image: "/images/acido-hialuronico-malaga.jpg",
       link: "/acido-hialuronico"
     }
@@ -218,7 +220,7 @@ const Home: React.FC = () => {
             <p className="text-lg text-[#575760] mb-10 leading-relaxed max-w-xl italic">
               "En Clínica CIES te proponemos un concepto de estética dental que busca la <span className="text-[#838F61] font-bold">naturalidad</span> y va más allá de lo funcional."
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-4 mb-10">
               <button className="btn-primary">
                 Reservar Cita
               </button>
@@ -227,13 +229,32 @@ const Home: React.FC = () => {
               </button>
             </div>
 
-            <div className="mt-16 flex flex-wrap items-center gap-8 text-[10px] text-[#575760] font-black uppercase tracking-[0.2em]">
+            {/* Checkmarks de Beneficios (Your Clinic Style) */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-8 mb-16">
+              {[
+                "Tecnología 3D sin moldes",
+                "Financiación hasta 24 meses",
+                "Atención 100% personalizada",
+                "Especialistas con Máster",
+                "Primera valoración CIES",
+                "Sin listas de espera"
+              ].map((benefit, i) => (
+                <div key={i} className="flex items-center gap-2">
+                  <div className="w-5 h-5 bg-[#838F61]/10 rounded-full flex items-center justify-center flex-shrink-0">
+                    <CheckCircle2 className="w-3 h-3 text-[#838F61]" />
+                  </div>
+                  <span className="text-xs font-bold text-[#222222] uppercase tracking-tight">{benefit}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="flex flex-wrap items-center gap-8 text-[10px] text-[#575760] font-black uppercase tracking-[0.2em] opacity-60">
               <div className="flex items-center gap-2">
-                <ShieldCheck className="w-5 h-5 text-[#838F61]" />
+                <ShieldCheck className="w-4 h-4" />
                 <span>Garantía CIES</span>
               </div>
               <div className="flex items-center gap-2">
-                <Clock className="w-5 h-5 text-[#838F61]" />
+                <Clock className="w-4 h-4" />
                 <span>Nº NICA: 60357</span>
               </div>
             </div>
@@ -449,6 +470,34 @@ const Home: React.FC = () => {
         </div>
       </section>
 
+      {/* NEW POSITION: Ready to start? Bridge CTA */}
+      <section className="py-24 bg-[#1A1D16] text-white text-center relative overflow-hidden">
+        <div className="container mx-auto px-6 relative z-10">
+          <h2 className="text-3xl md:text-5xl font-display font-extrabold mb-10 uppercase tracking-tighter">
+            ¿Listo para tu <span className="text-[#838F61]">nueva sonrisa</span>?
+          </h2>
+          <div className="flex flex-col sm:flex-row justify-center gap-6">
+            <a 
+              href="https://wa.me/34689189999"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-10 py-5 bg-[#25D366] text-white font-black uppercase tracking-widest text-sm hover:bg-[#1ebd5b] transition-all transform hover:-translate-y-1 shadow-2xl"
+            >
+              Pedir Cita por WhatsApp
+            </a>
+            <a 
+              href="https://maps.app.goo.gl/CvGH6j93P3XaEvxZ9"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-10 py-5 bg-transparent border-2 border-white/20 text-white font-black uppercase tracking-widest text-sm hover:bg-white/10 transition-all"
+            >
+              Ver ubicación en el mapa
+            </a>
+          </div>
+        </div>
+        <div className="absolute inset-0 bg-[#838F61]/10 opacity-30" />
+      </section>
+
       {/* Team Section */}
       <section className="py-32 bg-[#F7F8F9]">
         <div className="container mx-auto px-6">
@@ -494,75 +543,90 @@ const Home: React.FC = () => {
 
       <ReviewsSection />
 
-      {/* Contact Section */}
-      <section id="contacto" className="py-32 bg-white relative">
+      <FAQSection />
+
+      {/* Contact Section - Reorganized for Clarity */}
+      <section id="contacto" className="py-32 bg-white relative overflow-hidden">
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-            <div>
-              <h2 className="text-4xl md:text-6xl font-display font-extrabold text-[#222222] mb-12 uppercase tracking-tighter">
-                Tu cita en <br /> <span className="text-[#838F61]">un clic</span>
-              </h2>
-              <div className="space-y-10">
-                <div className="flex gap-6 items-center text-[#363C27]">
-                  <div className="w-12 h-12 bg-[#F7F8F9] flex items-center justify-center flex-shrink-0">
-                    <Phone className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <h5 className="font-black text-[10px] uppercase tracking-[0.2em] text-[#575760] mb-1">Teléfono Directo</h5>
-                    <p className="text-2xl text-[#222222] font-black tracking-tighter">951 91 94 25</p>
+          <div className="text-center mb-20">
+            <h2 className="text-[#838F61] font-black tracking-[0.4em] uppercase text-[10px] mb-4">Contacto Directo</h2>
+            <h3 className="text-4xl md:text-6xl font-display font-extrabold text-[#222222] uppercase tracking-tighter">
+              Tu cita en <br className="md:hidden" /> <span className="text-[#838F61]">un clic</span>
+            </h3>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+            {/* Info Cards & Promo */}
+            <div className="lg:col-span-5 space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-6">
+                {/* Teléfono Card */}
+                <div className="p-8 bg-[#F7F8F9] border border-slate-100 group hover:border-[#838F61]/30 transition-all duration-500">
+                  <div className="flex items-center gap-6">
+                    <div className="w-12 h-12 bg-white flex items-center justify-center text-[#363C27] shadow-sm">
+                      <Phone className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <h5 className="font-black text-[10px] uppercase tracking-[0.2em] text-[#575760] mb-1">Teléfono</h5>
+                      <p className="text-2xl text-[#222222] font-black tracking-tighter">951 91 94 25</p>
+                    </div>
                   </div>
                 </div>
-                <div className="flex gap-6 items-center text-[#363C27]">
-                  <div className="w-12 h-12 bg-[#F7F8F9] flex items-center justify-center flex-shrink-0">
-                    <MapPin className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <h5 className="font-black text-[10px] uppercase tracking-[0.2em] text-[#575760] mb-1">Dirección Clínica</h5>
-                    <p className="text-lg text-[#222222] font-bold tracking-tight leading-tight">Calle Ntra. Sra. de las Candelas 14, <br /> local 4, 29004 Málaga</p>
+
+                {/* Ubicación Card */}
+                <div className="p-8 bg-[#F7F8F9] border border-slate-100 group hover:border-[#838F61]/30 transition-all duration-500">
+                  <div className="flex items-center gap-6">
+                    <div className="w-12 h-12 bg-white flex items-center justify-center text-[#363C27] shadow-sm">
+                      <MapPin className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <h5 className="font-black text-[10px] uppercase tracking-[0.2em] text-[#575760] mb-1">Dirección</h5>
+                      <p className="text-sm text-[#222222] font-bold uppercase leading-tight">
+                        C. Ntra. Sra. de las Candelas 14, <br /> 29004 Málaga
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
 
-              <div className="mt-16 p-10 bg-[#A7B287] text-[#363C27] shadow-xl relative border border-[#363C27]/10">
-                <h4 className="text-2xl font-black uppercase tracking-tighter mb-4">Primera Revisión CIES</h4>
-                <p className="text-sm font-bold uppercase tracking-wider opacity-80 mb-8">Incluye radiografía panorámica y diagnóstico completo sin compromiso.</p>
-                <div className="text-[10px] font-black uppercase tracking-[0.3em] border-t border-[#363C27]/20 pt-4 inline-block">
-                  Promo exclusiva web
-                </div>
+              {/* Promo Card - Now more integrated */}
+              <div className="p-10 bg-[#A7B287] text-[#363C27] relative border border-[#363C27]/10 overflow-hidden group">
+                <Sparkles className="absolute -top-4 -right-4 w-24 h-24 text-[#363C27]/5 rotate-12 group-hover:rotate-45 transition-transform duration-1000" />
+                <h4 className="text-2xl font-black uppercase tracking-tighter mb-4 relative z-10">Primera Revisión CIES</h4>
+                <p className="text-sm font-bold uppercase tracking-wider opacity-80 mb-0 relative z-10">
+                  Incluye radiografía panorámica y diagnóstico completo por especialistas.
+                </p>
               </div>
             </div>
 
-            <ContactForm />
+            {/* Contact Form */}
+            <div className="lg:col-span-7">
+              <ContactForm />
+            </div>
           </div>
-        </div>
-      </section>
 
-      {/* Final Conversion Section */}
-      <section className="py-24 bg-[#1A1D16] text-white text-center relative overflow-hidden">
-        <div className="container mx-auto px-6 relative z-10">
-          <h2 className="text-3xl md:text-5xl font-display font-extrabold mb-10 uppercase tracking-tighter">
-            ¿Listo para tu <span className="text-[#838F61]">nueva sonrisa</span>?
-          </h2>
-          <div className="flex flex-col sm:flex-row justify-center gap-6">
+          {/* Interactive Map - Now at the bottom as a wide element */}
+          <div className="mt-20 relative w-full h-[350px] grayscale hover:grayscale-0 transition-all duration-1000 border border-slate-100 shadow-2xl group overflow-hidden">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3199.141444123144!2d-4.4520211!3d36.6873858!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd72f9beea600001%3A0x2f88f0687802e6f4!2sCalle%20Ntra.%20Sra.%20de%20las%20Candelas%2C%2014%2C%2029004%20M%C3%A1laga!5e0!3m2!1ses!2ses!4v1710000000000!5m2!1ses!2ses" 
+              width="100%" 
+              height="100%" 
+              style={{ border: 0, filter: 'contrast(1.1) brightness(0.9) hue-rotate(40deg)' }} 
+              allowFullScreen 
+              loading="lazy" 
+              referrerPolicy="no-referrer-when-downgrade"
+              className="opacity-80 group-hover:opacity-100 transition-opacity"
+            />
             <a 
-              href="https://wa.me/34689189999"
+              href="https://maps.app.goo.gl/CvGH6j93P3XaEvxZ9"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-10 py-5 bg-[#25D366] text-white font-black uppercase tracking-widest text-sm hover:bg-[#1ebd5b] transition-all transform hover:-translate-y-1 shadow-2xl"
+              className="absolute top-8 right-8 bg-[#1A1D16] text-white px-6 py-3 text-[10px] font-black uppercase tracking-widest shadow-2xl hover:bg-[#838F61] transition-all flex items-center gap-3"
             >
-              Pedir Cita por WhatsApp
-            </a>
-            <a 
-              href="https://www.google.com/maps/search/Calle+Ntra.+Sra.+de+las+Candelas+14,+Málaga"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-10 py-5 bg-transparent border-2 border-white/20 text-white font-black uppercase tracking-widest text-sm hover:bg-white/10 transition-all"
-            >
-              Ver ubicación en el mapa
+              <MapPin className="w-4 h-4" />
+              Obtener indicaciones de llegada
             </a>
           </div>
         </div>
-        <div className="absolute inset-0 bg-[#838F61]/10 opacity-30" />
       </section>
     </motion.div>
   );

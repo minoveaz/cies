@@ -80,7 +80,7 @@ const ReviewsSection: React.FC = () => {
 
         <div className="mt-12 text-center">
           <a 
-            href="https://www.google.com/search?q=clinica+cies+malaga+reseñas" 
+            href="https://maps.app.goo.gl/CvGH6j93P3XaEvxZ9" 
             target="_blank" 
             rel="noopener noreferrer"
             className="text-[10px] font-black uppercase tracking-[0.3em] text-[#363C27] hover:text-[#838F61] transition-colors border-b-2 border-[#363C27]/10 pb-2"
