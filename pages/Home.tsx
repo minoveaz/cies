@@ -24,6 +24,14 @@ import FAQSection from '@/components/FAQSection';
 import { trackEvent } from '@/utils/analytics';
 
 const Home: React.FC = () => {
+  const scrollToContact = () => {
+    const element = document.getElementById('contacto');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      trackEvent('view_treatment', { label: 'Scroll to Contact - Home' });
+    }
+  };
+
   const services = [
     {
       title: "Implantes Dentales",
@@ -289,12 +297,15 @@ const Home: React.FC = () => {
               "En Clínica CIES te proponemos un concepto de estética dental que busca la <span className="text-[#838F61] font-bold">naturalidad</span> y va más allá de lo funcional."
             </p>
             <div className="flex flex-col sm:flex-row gap-4 mb-10">
-              <button className="btn-primary">
+              <button 
+                onClick={scrollToContact}
+                className="btn-primary"
+              >
                 Reservar Cita
               </button>
-              <button className="btn-outline">
+              <a href="#tratamientos" className="btn-outline flex items-center justify-center">
                 Ver Tratamientos
-              </button>
+              </a>
             </div>
 
             {/* Checkmarks de Beneficios (Your Clinic Style) */}
@@ -386,10 +397,13 @@ const Home: React.FC = () => {
 
           {/* CTA Tech */}
           <div className="mt-20 text-center">
-            <button className="btn-secondary inline-flex items-center gap-4">
+            <a 
+              href="#tratamientos"
+              className="btn-secondary inline-flex items-center gap-4"
+            >
               Descubre nuestra tecnología 3D
               <ArrowRight className="w-5 h-5" />
-            </button>
+            </a>
           </div>
         </div>
       </section>
@@ -551,9 +565,10 @@ const Home: React.FC = () => {
           </h2>
           <div className="flex flex-col sm:flex-row justify-center gap-6">
             <a 
-              href="https://wa.me/34689189999"
+              href="https://wa.me/34689189999?text=Hola%20CIES%2C%20me%20gustaría%20pedir%20una%20cita%20informativa."
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackEvent('whatsapp_click', { category: 'conversion', label: 'Bridge Section' })}
               className="px-10 py-5 bg-[#25D366] text-white font-black uppercase tracking-widest text-sm hover:bg-[#1ebd5b] transition-all transform hover:-translate-y-1 shadow-2xl"
             >
               Pedir Cita por WhatsApp

@@ -25,7 +25,8 @@ export default defineConfig({
         '/blog',
         '/contacto',
         '/privacidad',
-        '/cookies'
+        '/cookies',
+        '/aviso-legal'
       ],
     }),
   ],

@@ -181,7 +181,15 @@ const Navbar: React.FC = () => {
           </a>
           <button 
             style={{ backgroundColor: verdeBosque }}
-            onClick={() => trackEvent('contact_form_submit', { category: 'conversion', label: 'Navbar Button' })}
+            onClick={() => {
+              const element = document.getElementById('contacto');
+              if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+              } else {
+                window.location.href = '/#contacto';
+              }
+              trackEvent('contact_form_submit', { category: 'conversion', label: 'Navbar Button' });
+            }}
             className="px-5 py-2.5 text-white rounded-none font-black uppercase tracking-[0.15em] text-[10px] shadow-sm hover:bg-[#838F61] transition-all duration-300"
           >
             Cita Online

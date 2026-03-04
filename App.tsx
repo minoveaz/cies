@@ -4,15 +4,19 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { MessageCircle, Phone, Mail, MapPin, Instagram, Facebook } from 'lucide-react';
 import Navbar from './components/Navbar';
 import StickyMobileCTA from './components/StickyMobileCTA';
+import CookieBanner from './components/CookieBanner';
+import ScrollToTop from './components/ScrollToTop';
 import { trackEvent } from './utils/analytics';
 
 // Pages - Lazy loading
 const Home = lazy(() => import('./pages/Home'));
 const PrivacyPolicy = lazy(() => import('./pages/legal/PrivacyPolicy'));
 const CookiesPolicy = lazy(() => import('./pages/legal/CookiesPolicy'));
+const LegalNotice = lazy(() => import('./pages/legal/LegalNotice'));
 const About = lazy(() => import('./pages/About'));
 const Blog = lazy(() => import('./pages/Blog'));
 const Contact = lazy(() => import('./pages/Contact'));
+const ImplantesDentales = lazy(() => import('./pages/treatments/ImplantesDentales'));
 
 const App: React.FC = () => {
   const location = useLocation();
@@ -27,6 +31,7 @@ const App: React.FC = () => {
 
   return (
     <div className="flex flex-col min-h-screen selection:bg-[#838F61]/20 selection:text-[#838F61]">
+      <ScrollToTop />
       <Navbar />
 
       <main className="flex-grow pt-24 lg:pt-0">
@@ -44,8 +49,10 @@ const App: React.FC = () => {
               <Route path="/sobre-nosotros" element={<About />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/contacto" element={<Contact />} />
+              <Route path="/implantes-dentales" element={<ImplantesDentales />} />
               <Route path="/privacidad" element={<PrivacyPolicy />} />
               <Route path="/cookies" element={<CookiesPolicy />} />
+              <Route path="/aviso-legal" element={<LegalNotice />} />
             </Routes>
           </AnimatePresence>
         </Suspense>
@@ -128,7 +135,8 @@ const App: React.FC = () => {
           <div className="pt-8 border-t border-white/5 text-center text-xs opacity-40">
             &copy; {new Date().getFullYear()} Clínica Dental CIES Málaga. <br className="md:hidden" />
             <span className="hidden md:inline"> | </span> 
-            <Link to="/privacidad" className="hover:underline">Aviso Legal</Link> | 
+            <Link to="/aviso-legal" className="hover:underline">Aviso Legal</Link> | 
+            <Link to="/privacidad" className="hover:underline">Política de Privacidad</Link> | 
             <Link to="/cookies" className="hover:underline">Política de Cookies</Link>
           </div>
         </div>
@@ -158,6 +166,7 @@ const App: React.FC = () => {
       </motion.a>
 
       <StickyMobileCTA />
+      <CookieBanner />
     </div>
   );
 };

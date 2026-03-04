@@ -7,6 +7,7 @@ Este documento centraliza las tareas pendientes, integraciones avanzadas y optim
 ## 1. Integraciones de Terceros
 - [ ] **Google Places API Integration**: Conectar el componente de reseñas directamente con la API de Google para mostrar la nota media (4.9⭐) y las últimas reseñas de forma automática y dinámica.
 - [ ] **Sistema de Citas Online**: Integrar una plataforma de agenda (tipo Calendly, Doctoralia o similar) para permitir reservas directas desde la web.
+- [ ] **Formulario de Contacto Funcional**: Implementar el envío real de correos electrónicos a través de un servicio externo (Formspree/EmailJS) o un backend propio en el servidor.
 
 ## 2. SEO y Autoridad
 - [ ] **Marcado Schema.org (Local Business)**: Implementar JSON-LD específico para clínicas dentales para mejorar la aparición de estrellas y horarios en los resultados de Google.
