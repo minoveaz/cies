@@ -13,7 +13,7 @@ const root = createRoot(container);
 root.render(
   <React.StrictMode>
     <HelmetProvider>
-      <BrowserRouter>
+      <BrowserRouter basename="/cies">
         <App />
       </BrowserRouter>
     </HelmetProvider>
