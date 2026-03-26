@@ -8,10 +8,11 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export default defineConfig({
+  base: '/cies/',
   plugins: [
     react(),
     Sitemap({
-      hostname: 'https://ciesclinica.com',
+      hostname: 'https://minoveaz.github.io/cies',
       dynamicRoutes: [
         '/implantes-dentales', 
         '/ortodoncia-invisible', 
