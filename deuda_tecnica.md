@@ -10,7 +10,7 @@ Este documento centraliza las tareas pendientes, integraciones avanzadas y optim
 - [ ] **Formulario de Contacto Funcional**: Implementar el envío real de correos electrónicos a través de un servicio externo (Formspree/EmailJS) o un backend propio en el servidor.
 
 ## 2. SEO y Autoridad
-- [ ] **Marcado Schema.org (Local Business)**: Implementar JSON-LD específico para clínicas dentales para mejorar la aparición de estrellas y horarios en los resultados de Google.
+- [x] **Marcado Schema.org (Local Business)**: Implementar JSON-LD específico para clínicas dentales para mejorar la aparición de estrellas y horarios en los resultados de Google.
 - [ ] **Optimización de Imágenes Avanzada**: Implementar carga perezosa (lazy loading) nativa y formatos AVIF para maximizar la puntuación en Core Web Vitals.
 - [ ] **Blog Engine**: Migrar y optimizar la estructura del blog para captación de tráfico orgánico mediante artículos educativos.
 

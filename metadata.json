@@ -18,7 +18,7 @@
     "robots": true,
     "canonical": true,
     "open_graph": true,
-    "schema_org": "Pending",
+    "schema_org": true,
     "performance_optimized": true
   }
 }
